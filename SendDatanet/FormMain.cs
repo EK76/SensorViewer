@@ -12,18 +12,18 @@ namespace SendDatanet
     public partial class FormMain : Form
     {
         const int portNumber = 5000;
-        const string serverIp = "sensordata";
+        string serverIp = "sensordevice";
         static byte[] bytesToRead;
         static int bytesRead;
         bool checkOnce = false;
         string sensorData, temp, hum;
         int addPoint = 0;
-        double convertTemp, convertHum;
+        decimal convertTemp, convertHum;
 
-        List<double> xTempValue = new List<double>();
-        List<double> yTempValue = new List<double>();
-        List<double> xHumValue = new List<double>();
-        List<double> yHumValue = new List<double>();
+        List<int> xTempValue = new List<int>();
+        List<decimal> yTempValue = new List<decimal>();
+        List<int> xHumValue = new List<int>();
+        List<decimal> yHumValue = new List<decimal>();
 
         public FormMain()
         {
@@ -169,15 +169,17 @@ namespace SendDatanet
                     //  MessageBox.Show(temp);
                     hum = hum.Remove(0, 17);
                     temp = removeText(temp);
+                    temp = temp.Replace(".", ",");
                     hum = removeText(hum);
+                    hum = hum.Replace(".", ",");
                     labelTemp.Text = "Temperature: " + temp + " C";
                     labelHum.Text = "Humitidy: " + hum + " %";
 
-                    convertTemp = double.Parse(temp);
+                    convertTemp = decimal.Parse(temp);
                     yTempValue.Add(convertTemp);
                     xTempValue.Add(addPoint);
 
-                    convertHum = double.Parse(hum);
+                    convertHum = decimal.Parse(hum);
                     yHumValue.Add(convertHum);
                     xHumValue.Add(addPoint);
 
@@ -188,6 +190,7 @@ namespace SendDatanet
                         yHumValue.RemoveAt(0);
                         xHumValue.RemoveAt(0);
                     }
+
                     chartTemp.ChartAreas[0].AxisX.Minimum = xTempValue[0];
                     chartTemp.ChartAreas[0].AxisX.Maximum = addPoint;
                     chartTemp.Series[0].Points.DataBindXY(xTempValue, yTempValue);
@@ -196,6 +199,9 @@ namespace SendDatanet
                     chartHum.ChartAreas[0].AxisX.Maximum = addPoint;
                     chartHum.Series[0].Points.DataBindXY(xHumValue, yHumValue);
 
+                    labelAvg.Text = "Temperature medium value: " + Math.Round(yTempValue.Average(), 1).ToString() + " °C | Humitidy medium value:" + Math.Round(yHumValue.Average(), 1).ToString() + " %";
+                    labelMin.Text = "Temperature min value: " + yTempValue.Min().ToString() + " °C      | Humitidy max value: " + yHumValue.Min().ToString() + " %";
+                    labelMax.Text = "Temperature max value: " + yTempValue.Max().ToString() + " °C      | Humitidy max value: " + yHumValue.Max().ToString() + " %";
 
                     notifyIcon1.Text = "Ken's Sensor Data" + Environment.NewLine + "Temperature: " + temp + " C" + Environment.NewLine + "Humitidy: " + hum + " %";
                 }
@@ -204,6 +210,8 @@ namespace SendDatanet
             catch (Exception ex)
             {
                 MessageBox.Show("Connection failed, " + ex.Message);
+                timer1.Stop();
+                restartTimerToolStripMenuItem.Enabled = true;
             }
         }
 
@@ -277,6 +285,51 @@ namespace SendDatanet
             normalViewToolStripMenuItem.Checked = true;
             this.Width = 2000;
             this.Height = 700;
+        }
+
+        private void restartTimerToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            timer1.Start();
+            restartTimerToolStripMenuItem.Enabled = false;
+        }
+
+        private void lightBackToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            lightBackToolStripMenuItem.Checked = true;
+            mediumBackToolStripMenuItem.Checked = false;
+            darkBackToolStripMenuItem.Checked = false;
+            chartTemp.BackColor = Color.White;
+            chartTemp.ChartAreas[0].BackColor = Color.White;
+            chartTemp.Legends[0].BackColor = Color.White;
+            chartHum.BackColor = Color.White;
+            chartHum.ChartAreas[0].BackColor = Color.White;
+            chartTemp.Legends[0].BackColor = Color.White;
+        }
+
+        private void mediumBackToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            lightBackToolStripMenuItem.Checked = false;
+            mediumBackToolStripMenuItem.Checked = true;
+            darkBackToolStripMenuItem.Checked = false;
+            chartTemp.BackColor = Color.LightGray;
+            chartTemp.ChartAreas[0].BackColor = Color.LightGray;
+            chartTemp.Legends[0].BackColor = Color.LightGray;
+            chartHum.BackColor = Color.LightGray;
+            chartHum.ChartAreas[0].BackColor = Color.LightGray;
+            chartHum.Legends[0].BackColor = Color.LightGray;
+        }
+
+        private void darkBackToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            lightBackToolStripMenuItem.Checked = false;
+            mediumBackToolStripMenuItem.Checked = false;
+            darkBackToolStripMenuItem.Checked = true;
+            chartTemp.BackColor = Color.Gray;
+            chartTemp.ChartAreas[0].BackColor = Color.Gray;
+            chartTemp.Legends[0].BackColor = Color.Gray;
+            chartHum.BackColor = Color.Gray;
+            chartHum.ChartAreas[0].BackColor = Color.Gray;
+            chartHum.Legends[0].BackColor = Color.LightGray;
         }
     }
 }
