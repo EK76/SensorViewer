@@ -108,7 +108,7 @@
             // exitToolStripMenuItem
             // 
             exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            exitToolStripMenuItem.Size = new Size(92, 22);
+            exitToolStripMenuItem.Size = new Size(180, 22);
             exitToolStripMenuItem.Text = "Exit";
             exitToolStripMenuItem.Click += exitToolStripMenuItem_Click;
             // 
@@ -122,7 +122,7 @@
             // smallViewToolStripMenuItem
             // 
             smallViewToolStripMenuItem.Name = "smallViewToolStripMenuItem";
-            smallViewToolStripMenuItem.Size = new Size(152, 22);
+            smallViewToolStripMenuItem.Size = new Size(180, 22);
             smallViewToolStripMenuItem.Text = "Tiny Screen";
             smallViewToolStripMenuItem.Click += smallViewToolStripMenuItem_Click;
             // 
@@ -131,7 +131,7 @@
             normalViewToolStripMenuItem.Checked = true;
             normalViewToolStripMenuItem.CheckState = CheckState.Checked;
             normalViewToolStripMenuItem.Name = "normalViewToolStripMenuItem";
-            normalViewToolStripMenuItem.Size = new Size(152, 22);
+            normalViewToolStripMenuItem.Size = new Size(180, 22);
             normalViewToolStripMenuItem.Text = "Normal Screen";
             normalViewToolStripMenuItem.Click += normalViewToolStripMenuItem_Click;
             // 
@@ -266,7 +266,7 @@
             // 
             // chartTemp
             // 
-            chartTemp.BackColor = Color.Gray;
+            chartTemp.BackColor = Color.LightGray;
             chartArea1.AxisX.LineColor = Color.Transparent;
             chartArea1.AxisX.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.NotSet;
             chartArea1.AxisX.MajorGrid.Enabled = false;
@@ -274,10 +274,10 @@
             chartArea1.AxisX.Minimum = 1D;
             chartArea1.AxisY.Maximum = 40D;
             chartArea1.AxisY.Minimum = -40D;
-            chartArea1.BackColor = Color.Gray;
+            chartArea1.BackColor = Color.LightGray;
             chartArea1.Name = "ChartArea1";
             chartTemp.ChartAreas.Add(chartArea1);
-            legend1.BackColor = Color.Gray;
+            legend1.BackColor = Color.LightGray;
             legend1.Name = "Legend1";
             chartTemp.Legends.Add(legend1);
             chartTemp.Location = new Point(12, 176);
@@ -295,16 +295,16 @@
             // 
             // chartHum
             // 
-            chartHum.BackColor = Color.Gray;
+            chartHum.BackColor = Color.LightGray;
             chartArea2.AxisX.MajorGrid.Enabled = false;
             chartArea2.AxisX.Maximum = 10D;
             chartArea2.AxisX.Minimum = 1D;
             chartArea2.AxisY.Maximum = 100D;
             chartArea2.AxisY.Minimum = 0D;
-            chartArea2.BackColor = Color.Gray;
+            chartArea2.BackColor = Color.LightGray;
             chartArea2.Name = "ChartArea1";
             chartHum.ChartAreas.Add(chartArea2);
-            legend2.BackColor = Color.Gray;
+            legend2.BackColor = Color.LightGray;
             legend2.Name = "Legend1";
             chartHum.Legends.Add(legend2);
             chartHum.Location = new Point(1004, 176);

@@ -47,10 +47,10 @@ namespace SendDatanet
         {
             chartTemp.ChartAreas[0].AxisX.LabelStyle.Enabled = false;
             chartHum.ChartAreas[0].AxisX.LabelStyle.Enabled = false;
-            timer1.Start();
             try
             {
                 client = new TcpClient(serverIp, portNumber);
+                timer1.Start();
             }
             catch (Exception ex)
             {
@@ -275,7 +275,6 @@ namespace SendDatanet
             normalViewToolStripMenuItem.Checked = false;
             this.Width = 400;
             this.Height = 210;
-
         }
 
         private void normalViewToolStripMenuItem_Click(object sender, EventArgs e)
@@ -289,8 +288,17 @@ namespace SendDatanet
 
         private void restartTimerToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            timer1.Start();
-            restartTimerToolStripMenuItem.Enabled = false;
+            try
+            {
+                client = new TcpClient(serverIp, portNumber);
+                timer1.Start();
+                restartTimerToolStripMenuItem.Enabled = false;
+            }
+            catch (Exception ex)
+            {
+                restartTimerToolStripMenuItem.Enabled = true;
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void lightBackToolStripMenuItem_Click(object sender, EventArgs e)
@@ -329,7 +337,7 @@ namespace SendDatanet
             chartTemp.Legends[0].BackColor = Color.Gray;
             chartHum.BackColor = Color.Gray;
             chartHum.ChartAreas[0].BackColor = Color.Gray;
-            chartHum.Legends[0].BackColor = Color.LightGray;
+            chartHum.Legends[0].BackColor = Color.Gray;
         }
     }
 }
