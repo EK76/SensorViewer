@@ -51,7 +51,6 @@ except KeyboardInterrupt:
 **A picture of the application.**
 
 <img width="1991" height="689" alt="image" src="https://github.com/user-attachments/assets/55333681-3d0a-46e8-8aba-ee775462d329" />
-
-**How to clone this repository with git.**
-https://github.com/EK76/SendDatanet.git<br/>
+<br/><br/>
+You can clone this repository with git by using https://github.com/EK76/SendDatanet.git<br/>
 If you discover any fault or inaccurate information, feel free to contact me trough epost address: ken.ekholm@live.com
