@@ -1,8 +1,8 @@
 # Sensor DataViewer
 
 The goal with this project was to build a simple application created by Visual Studio 2022 C# which reads continuously the sensor's temperature and humitidy values, which are
-obtained from Raspberry Pi 5 device with a help of DHT22 sensor trough network protocol. The network protocoll in my case accept that any IPv4 ip adress with portnumber 5000 can
-receive DHT22 sensor data from Raspberry PI 5 device The operating system of the device is Debian GNU/Linux 13 (trixie).
+obtained from Raspberry Pi 5 device with a help of DHT22 sensor trough network protocol. The network protocol in my case accepts that any IPv4 ip adress with portnumber 5000 can
+receive DHT22 sensor data from Raspberry PI 5 device. The operating system of the device is Debian GNU/Linux 13 (trixie).
 
 Reading the sensor's values and transfer data over network to Visual Studio C# application was done with help of python script. 
 Visual Studio C# application show the sensor data in real time with help of two graphs. One for temperature and the ohter one for humitidy.
