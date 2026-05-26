@@ -1,6 +1,6 @@
 ﻿namespace SendDatanet
 {
-    partial class FormMain
+    partial class Main
     {
         /// <summary>
         ///  Required designer variable.
@@ -29,13 +29,13 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
             labelTemp = new Label();
             menuStrip1 = new MenuStrip();
             fileToolStripMenuItem = new ToolStripMenuItem();
@@ -43,6 +43,7 @@
             viewToolStripMenuItem = new ToolStripMenuItem();
             smallViewToolStripMenuItem = new ToolStripMenuItem();
             normalViewToolStripMenuItem = new ToolStripMenuItem();
+            hardwareInfoToolStripMenuItem = new ToolStripMenuItem();
             settingsToolStripMenuItem = new ToolStripMenuItem();
             colorLineToolStripMenuItem = new ToolStripMenuItem();
             markerSizeToolStripMenuItem = new ToolStripMenuItem();
@@ -58,7 +59,8 @@
             mediumBackToolStripMenuItem = new ToolStripMenuItem();
             darkBackToolStripMenuItem = new ToolStripMenuItem();
             toolStripSeparator1 = new ToolStripSeparator();
-            restartTimerToolStripMenuItem = new ToolStripMenuItem();
+            setIntervalToolStripMenuItem = new ToolStripMenuItem();
+            setIntervalToolStripComboBox = new ToolStripComboBox();
             helpToolStripMenuItem = new ToolStripMenuItem();
             aboutSensorViewerToolStripMenuItem = new ToolStripMenuItem();
             chartTemp = new System.Windows.Forms.DataVisualization.Charting.Chart();
@@ -74,10 +76,13 @@
             labelMin = new Label();
             labelAvg = new Label();
             labelMax = new Label();
+            statusStrip1 = new StatusStrip();
+            toolStripStatusLabelinterval = new ToolStripStatusLabel();
             menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)chartTemp).BeginInit();
             ((System.ComponentModel.ISupportInitialize)chartHum).BeginInit();
             contextMenuStrip1.SuspendLayout();
+            statusStrip1.SuspendLayout();
             SuspendLayout();
             // 
             // labelTemp
@@ -108,13 +113,13 @@
             // exitToolStripMenuItem
             // 
             exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            exitToolStripMenuItem.Size = new Size(180, 22);
+            exitToolStripMenuItem.Size = new Size(92, 22);
             exitToolStripMenuItem.Text = "Exit";
             exitToolStripMenuItem.Click += exitToolStripMenuItem_Click;
             // 
             // viewToolStripMenuItem
             // 
-            viewToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { smallViewToolStripMenuItem, normalViewToolStripMenuItem });
+            viewToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { smallViewToolStripMenuItem, normalViewToolStripMenuItem, hardwareInfoToolStripMenuItem });
             viewToolStripMenuItem.Name = "viewToolStripMenuItem";
             viewToolStripMenuItem.Size = new Size(44, 20);
             viewToolStripMenuItem.Text = "View";
@@ -122,7 +127,7 @@
             // smallViewToolStripMenuItem
             // 
             smallViewToolStripMenuItem.Name = "smallViewToolStripMenuItem";
-            smallViewToolStripMenuItem.Size = new Size(180, 22);
+            smallViewToolStripMenuItem.Size = new Size(152, 22);
             smallViewToolStripMenuItem.Text = "Tiny Screen";
             smallViewToolStripMenuItem.Click += smallViewToolStripMenuItem_Click;
             // 
@@ -131,13 +136,20 @@
             normalViewToolStripMenuItem.Checked = true;
             normalViewToolStripMenuItem.CheckState = CheckState.Checked;
             normalViewToolStripMenuItem.Name = "normalViewToolStripMenuItem";
-            normalViewToolStripMenuItem.Size = new Size(180, 22);
+            normalViewToolStripMenuItem.Size = new Size(152, 22);
             normalViewToolStripMenuItem.Text = "Normal Screen";
             normalViewToolStripMenuItem.Click += normalViewToolStripMenuItem_Click;
             // 
+            // hardwareInfoToolStripMenuItem
+            // 
+            hardwareInfoToolStripMenuItem.Name = "hardwareInfoToolStripMenuItem";
+            hardwareInfoToolStripMenuItem.Size = new Size(152, 22);
+            hardwareInfoToolStripMenuItem.Text = "Hardware info";
+            hardwareInfoToolStripMenuItem.Click += hardwareInfoToolStripMenuItem_Click;
+            // 
             // settingsToolStripMenuItem
             // 
-            settingsToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { colorLineToolStripMenuItem, markerSizeToolStripMenuItem, noMarkerToolStripMenuItem, chartBackToolStripMenuItem, toolStripSeparator1, restartTimerToolStripMenuItem });
+            settingsToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { colorLineToolStripMenuItem, markerSizeToolStripMenuItem, noMarkerToolStripMenuItem, chartBackToolStripMenuItem, toolStripSeparator1, setIntervalToolStripMenuItem });
             settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
             settingsToolStripMenuItem.Size = new Size(61, 20);
             settingsToolStripMenuItem.Text = "Settings";
@@ -217,7 +229,7 @@
             // lightBackToolStripMenuItem
             // 
             lightBackToolStripMenuItem.Name = "lightBackToolStripMenuItem";
-            lightBackToolStripMenuItem.Size = new Size(180, 22);
+            lightBackToolStripMenuItem.Size = new Size(119, 22);
             lightBackToolStripMenuItem.Text = "Light";
             lightBackToolStripMenuItem.Click += lightBackToolStripMenuItem_Click;
             // 
@@ -226,14 +238,14 @@
             mediumBackToolStripMenuItem.Checked = true;
             mediumBackToolStripMenuItem.CheckState = CheckState.Checked;
             mediumBackToolStripMenuItem.Name = "mediumBackToolStripMenuItem";
-            mediumBackToolStripMenuItem.Size = new Size(180, 22);
+            mediumBackToolStripMenuItem.Size = new Size(119, 22);
             mediumBackToolStripMenuItem.Text = "Medium";
             mediumBackToolStripMenuItem.Click += mediumBackToolStripMenuItem_Click;
             // 
             // darkBackToolStripMenuItem
             // 
             darkBackToolStripMenuItem.Name = "darkBackToolStripMenuItem";
-            darkBackToolStripMenuItem.Size = new Size(180, 22);
+            darkBackToolStripMenuItem.Size = new Size(119, 22);
             darkBackToolStripMenuItem.Text = "Dark";
             darkBackToolStripMenuItem.Click += darkBackToolStripMenuItem_Click;
             // 
@@ -242,13 +254,20 @@
             toolStripSeparator1.Name = "toolStripSeparator1";
             toolStripSeparator1.Size = new Size(177, 6);
             // 
-            // restartTimerToolStripMenuItem
+            // setIntervalToolStripMenuItem
             // 
-            restartTimerToolStripMenuItem.Enabled = false;
-            restartTimerToolStripMenuItem.Name = "restartTimerToolStripMenuItem";
-            restartTimerToolStripMenuItem.Size = new Size(180, 22);
-            restartTimerToolStripMenuItem.Text = "Restart Timer";
-            restartTimerToolStripMenuItem.Click += restartTimerToolStripMenuItem_Click;
+            setIntervalToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { setIntervalToolStripComboBox });
+            setIntervalToolStripMenuItem.Name = "setIntervalToolStripMenuItem";
+            setIntervalToolStripMenuItem.Size = new Size(180, 22);
+            setIntervalToolStripMenuItem.Text = "Set Chart Interval";
+            // 
+            // setIntervalToolStripComboBox
+            // 
+            setIntervalToolStripComboBox.Items.AddRange(new object[] { "20", "25", "30", "35", "40", "45", "50" });
+            setIntervalToolStripComboBox.Name = "setIntervalToolStripComboBox";
+            setIntervalToolStripComboBox.Size = new Size(121, 23);
+            setIntervalToolStripComboBox.Text = "20";
+            setIntervalToolStripComboBox.SelectedIndexChanged += setIntervalToolStripComboBox_SelectedIndexChanged;
             // 
             // helpToolStripMenuItem
             // 
@@ -267,28 +286,28 @@
             // chartTemp
             // 
             chartTemp.BackColor = Color.LightGray;
-            chartArea1.AxisX.LineColor = Color.Transparent;
-            chartArea1.AxisX.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.NotSet;
-            chartArea1.AxisX.MajorGrid.Enabled = false;
-            chartArea1.AxisX.Maximum = 10D;
-            chartArea1.AxisX.Minimum = 1D;
-            chartArea1.AxisY.Maximum = 40D;
-            chartArea1.AxisY.Minimum = -40D;
-            chartArea1.BackColor = Color.LightGray;
-            chartArea1.Name = "ChartArea1";
-            chartTemp.ChartAreas.Add(chartArea1);
-            legend1.BackColor = Color.LightGray;
-            legend1.Name = "Legend1";
-            chartTemp.Legends.Add(legend1);
+            chartArea3.AxisX.LineColor = Color.Transparent;
+            chartArea3.AxisX.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.NotSet;
+            chartArea3.AxisX.MajorGrid.Enabled = false;
+            chartArea3.AxisX.Maximum = 10D;
+            chartArea3.AxisX.Minimum = 1D;
+            chartArea3.AxisY.Maximum = 40D;
+            chartArea3.AxisY.Minimum = -40D;
+            chartArea3.BackColor = Color.LightGray;
+            chartArea3.Name = "ChartArea1";
+            chartTemp.ChartAreas.Add(chartArea3);
+            legend3.BackColor = Color.LightGray;
+            legend3.Name = "Legend1";
+            chartTemp.Legends.Add(legend3);
             chartTemp.Location = new Point(12, 176);
             chartTemp.Name = "chartTemp";
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series1.Legend = "Legend1";
-            series1.MarkerSize = 10;
-            series1.MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Circle;
-            series1.Name = "Temperature";
-            chartTemp.Series.Add(series1);
+            series3.ChartArea = "ChartArea1";
+            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series3.Legend = "Legend1";
+            series3.MarkerSize = 10;
+            series3.MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Circle;
+            series3.Name = "Temperature";
+            chartTemp.Series.Add(series3);
             chartTemp.Size = new Size(963, 473);
             chartTemp.TabIndex = 6;
             chartTemp.Text = "chart1";
@@ -296,26 +315,26 @@
             // chartHum
             // 
             chartHum.BackColor = Color.LightGray;
-            chartArea2.AxisX.MajorGrid.Enabled = false;
-            chartArea2.AxisX.Maximum = 10D;
-            chartArea2.AxisX.Minimum = 1D;
-            chartArea2.AxisY.Maximum = 100D;
-            chartArea2.AxisY.Minimum = 0D;
-            chartArea2.BackColor = Color.LightGray;
-            chartArea2.Name = "ChartArea1";
-            chartHum.ChartAreas.Add(chartArea2);
-            legend2.BackColor = Color.LightGray;
-            legend2.Name = "Legend1";
-            chartHum.Legends.Add(legend2);
+            chartArea4.AxisX.MajorGrid.Enabled = false;
+            chartArea4.AxisX.Maximum = 10D;
+            chartArea4.AxisX.Minimum = 1D;
+            chartArea4.AxisY.Maximum = 100D;
+            chartArea4.AxisY.Minimum = 0D;
+            chartArea4.BackColor = Color.LightGray;
+            chartArea4.Name = "ChartArea1";
+            chartHum.ChartAreas.Add(chartArea4);
+            legend4.BackColor = Color.LightGray;
+            legend4.Name = "Legend1";
+            chartHum.Legends.Add(legend4);
             chartHum.Location = new Point(1004, 176);
             chartHum.Name = "chartHum";
-            series2.ChartArea = "ChartArea1";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series2.Legend = "Legend1";
-            series2.MarkerSize = 10;
-            series2.MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Circle;
-            series2.Name = "Humitidy";
-            chartHum.Series.Add(series2);
+            series4.ChartArea = "ChartArea1";
+            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series4.Legend = "Legend1";
+            series4.MarkerSize = 10;
+            series4.MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Circle;
+            series4.Name = "Humitidy";
+            chartHum.Series.Add(series4);
             chartHum.Size = new Size(968, 473);
             chartHum.TabIndex = 7;
             chartHum.Text = "chart2";
@@ -341,9 +360,7 @@
             // 
             // timer1
             // 
-            timer1.Enabled = true;
             timer1.Interval = 5000;
-            timer1.Tick += timer1_Tick;
             // 
             // notifyIcon1
             // 
@@ -400,12 +417,29 @@
             labelMax.Size = new Size(0, 25);
             labelMax.TabIndex = 12;
             // 
-            // FormMain
+            // statusStrip1
+            // 
+            statusStrip1.Items.AddRange(new ToolStripItem[] { toolStripStatusLabelinterval });
+            statusStrip1.Location = new Point(0, 661);
+            statusStrip1.Name = "statusStrip1";
+            statusStrip1.Size = new Size(1984, 35);
+            statusStrip1.TabIndex = 13;
+            statusStrip1.Text = "statusStrip1";
+            // 
+            // toolStripStatusLabelinterval
+            // 
+            toolStripStatusLabelinterval.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            toolStripStatusLabelinterval.Name = "toolStripStatusLabelinterval";
+            toolStripStatusLabelinterval.Size = new Size(170, 30);
+            toolStripStatusLabelinterval.Text = "Show interval: 20";
+            // 
+            // Main
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(1984, 661);
+            ClientSize = new Size(1984, 696);
+            Controls.Add(statusStrip1);
             Controls.Add(labelMax);
             Controls.Add(labelAvg);
             Controls.Add(labelMin);
@@ -418,7 +452,7 @@
             FormBorderStyle = FormBorderStyle.FixedSingle;
             MainMenuStrip = menuStrip1;
             MaximizeBox = false;
-            Name = "FormMain";
+            Name = "Main";
             ShowIcon = false;
             Text = "SensorData Viewer";
             FormClosed += FormMain_FormClosed;
@@ -429,6 +463,8 @@
             ((System.ComponentModel.ISupportInitialize)chartTemp).EndInit();
             ((System.ComponentModel.ISupportInitialize)chartHum).EndInit();
             contextMenuStrip1.ResumeLayout(false);
+            statusStrip1.ResumeLayout(false);
+            statusStrip1.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -467,11 +503,15 @@
         private Label labelMin;
         private Label labelAvg;
         private Label labelMax;
-        private ToolStripMenuItem restartTimerToolStripMenuItem;
+        private ToolStripMenuItem setIntervalToolStripMenuItem;
         private ToolStripSeparator toolStripSeparator1;
         private ToolStripMenuItem chartBackToolStripMenuItem;
         private ToolStripMenuItem lightBackToolStripMenuItem;
         private ToolStripMenuItem mediumBackToolStripMenuItem;
         private ToolStripMenuItem darkBackToolStripMenuItem;
+        private ToolStripMenuItem hardwareInfoToolStripMenuItem;
+        private ToolStripComboBox setIntervalToolStripComboBox;
+        private StatusStrip statusStrip1;
+        private ToolStripStatusLabel toolStripStatusLabelinterval;
     }
 }

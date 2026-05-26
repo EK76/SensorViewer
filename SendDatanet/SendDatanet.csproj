@@ -9,8 +9,21 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="EcoCore" Version="7.2.0.17245" />
-    <PackageReference Include="WinForms.DataVisualization" Version="1.10.0" />
+    <PackageReference Include="EcoCore" Version="7.2.0.17394" />
+    <PackageReference Include="SimpleTCP" Version="1.0.24" />
+    <PackageReference Include="WinForms.DataVisualization" Version="1.10.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Pictures\dht22.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Pictures\raspberrypi5.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Pictures\schema.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>
