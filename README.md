@@ -36,19 +36,31 @@ socketvalue.listen(3)
 print('Server is now running.')
 sensor =  adafruit_dht.DHT22(board.D18)
 
-def value_control():
-    temp = sensor.temperature
-    hum = sensor.humidity
-    currentData = 'Temperature: ' + str(temp) + ' Humitidy: ' + str(hum)
-    clientsocket.send(bytes(currentData, "utf-8"))
-    Timer(5, value_control).start()
+def valueControl():
+    try:
+       temp = sensor.temperature
+       hum = sensor.humidity
+       currentData = 'Temperature: ' + str(temp) + ' Humitidy: ' + str(hum)
+       clientsocket.send(bytes(currentData, "utf-8"))
+       Timer(5, valueControl).start()
+    except RuntimeError as error:
+       currentData = 'error'
+       clientsocket.send(bytes(currentData, "utf-8"))
+       print("Error: ", error.args[0])
 try:
    while True:
-      clientsocket, address = socketvalue.accept()
-      print(f"Connection from {address} has been established.")
-      value_control()
+      try:
+         clientsocket, address = socketvalue.accept()
+         print(f"Connection from {address} has been established.")
+         valueControl()
+      except RuntimeError as error:
+         currentData = 'Error'
+         clientsocket.send(bytes(currentData, "utf-8"))
+         printprint("Error: ", error.args[0])
 except KeyboardInterrupt:
     sys.exit(0)
+except ValueError:
+    raise ValueError("Client IP adress not detected raise ValueError") from None
 ```
 I used python version 3.13.5 for this project.
 
