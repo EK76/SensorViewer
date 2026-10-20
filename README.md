@@ -1,13 +1,14 @@
 # Sensor DataViewer
 
-The goal with this project was to build a simple application created by Visual Studio 2022 C# which reads continuously the sensor's temperature and humitidy values, which are
-obtained from Raspberry Pi 5 device with a help of DHT22 sensor trough network protocol. The network protocol in my case accepts that any IPv4 ip adress with portnumber 5000 can
-receive DHT22 sensor data from Raspberry PI 5 device. The operating system of the device is Debian GNU/Linux 13 (trixie).
+The goal of this project was to develop a simple application using Visual Studio 2022 C# that continuously reads temperature and humidity data from a DHT22 sensor connected to a Raspberry Pi 5. 
+The sensor data is transmitted over a network and displayed in real time by the Visual Studio C# application.
+In this implementation, the network service is configured to send DHT22 sensor data to any IPv4 address listening on port 5000. This allows the application to receive sensor readings from the Raspberry Pi 5 across a local network.
 
-Reading the sensor's values and transfer data over network to Visual Studio C# application was done with help of python script. 
-Visual Studio C# application show the sensor data in real time with help of two graphs. One for temperature and the ohter one for humitidy.
+The Raspberry Pi 5 runs Debian GNU/Linux 13 (Trixie). A Python application is responsible for reading the DHT22 sensor values and transmitting the data over the network to the Visual Studio C# application. 
+The Python source code is included in the Python folder within this project. The Visual Studio C# application displays the sensor data in real time using two graphs. One for temperature and the other one for humitidy. 
+The Raspberry Pi 5 reads temperature and humidity values from the DHT22 sensor and transfers the data over the network to the Visual Studio C# application for real-time monitoring.
 
-#### Requirements for this Visual Studio C# project.
+#### Visual Studio C#pProject requirements.
 - .NET 9.0
 -  C# language version 13.0
 
@@ -15,8 +16,8 @@ Visual Studio C# application show the sensor data in real time with help of two 
 
 <img width="424" height="377" alt="image" src="https://github.com/user-attachments/assets/e0e1109f-902d-422b-a060-8d95ffe38958" />
 
-Sensor DHT22's signal is connected to Rasepberry PI 5's pin 12 (GPIO 18) where it reads the temperature and humitidy from sensor. 
-Operating voltage is 3.3V - 5.5V for the DHT 22 sensor.
+The DHT22 sensor's data pin is connected to pin 12 (GPIO 18) on the Raspberry Pi 5. GPIO 18 is used to read temperature and humidity measurements from the sensor.
+The DHT22 sensor operates within a voltage range of 3.3 V to 5.5 V, making it compatible with the Raspberry Pi 5.
 
 <img width="348" height="295" alt="image" src="https://github.com/user-attachments/assets/65eeb19c-32bb-4942-a8b2-a9ab43b24d3d" />
 
